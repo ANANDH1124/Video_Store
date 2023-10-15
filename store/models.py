@@ -49,4 +49,12 @@ class BookedProduct(models.Model):
 		return '{}'.format(self.ID)
 
 
+class UserLogin(models.Model):
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    email = models.EmailField()
+    # Add more fields as needed, such as name, profile picture, etc.
+
+    def __str__(self):
+        return self.username
 

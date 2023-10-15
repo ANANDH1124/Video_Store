@@ -4,12 +4,11 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 
 from django.template import RequestContext
-from django.shortcuts import render_to_response
 
 
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import RegisterForm
 
 from .models import Product
@@ -72,10 +71,10 @@ def home(request):
 
 
 
-    return render(request, "store/home.html", args)
+    return render(request, "home.html", args)
 
 def about(request):
-	return render(request,"store/about.html")  
+	return render(request,"about.html")  
 
 def user_login(request):
     context = RequestContext(request)
@@ -97,11 +96,11 @@ def user_login(request):
               return render(request, 'login.html', {})
     else:
         # the login is a  GET request, so just show the user the login form.
-        return render(request, 'store/login.html', {})
+        return render(request, 'login.html', {})
 
 def user_register(request):
     # if this is a POST request we need to process the form data
-    template = 'store/register.html'
+    template = 'register.html'
 
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -158,7 +157,7 @@ def user_rentals(request):
     args = {
         'movie_list':movie_list
     }
-    return render(request,"store/rentalsPage.html", args) 
+    return render(request,"rentalsPage.html", args) 
 
 
 def book(request):
